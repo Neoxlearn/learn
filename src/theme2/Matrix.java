@@ -73,7 +73,6 @@ public class Matrix {
         showArray(matrix.getMatrixArray());
     }
 
-
     private static int[][] createMatrix(int countLines, int countColumn) {
         int[][] matrix = new int[countLines][countColumn];
 
