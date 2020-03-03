@@ -16,14 +16,14 @@ public class Matrix {
     private int countLines;
     private int countColumn;
 
-    private static int[][] matrixArray;
+    private int[][] matrixArray;
 
 
     public Matrix() throws Exception {
         this.countLines = setParameter("количество строк");
         this.countColumn = setParameter("количество столбцов");
 
-        matrixArray = createMatrix(countLines, countColumn);
+        this.matrixArray = createMatrix(countLines, countColumn);
 
     }
 
@@ -35,8 +35,8 @@ public class Matrix {
         return countColumn;
     }
 
-    private static void setMatrixArray(int[][] matrixArray) {
-        Matrix.matrixArray = matrixArray;
+    private void setMatrixArray(int[][] matrixArray) {
+        this.matrixArray = matrixArray;
     }
 
     private int[][] getMatrixArray() {
@@ -69,8 +69,8 @@ public class Matrix {
     public static void main(String[] args) throws Exception {
         Matrix matrix = new Matrix();
         showArray(matrix.getMatrixArray());
-        shiftMatrix(matrix.getMatrixArray(), matrix.setShiftParameter());
-        //shiftArray(matrix.getMatrixArray(), matrix.setShiftParameter());
+        //shiftMatrix(matrix.getMatrixArray(), matrix.setShiftParameter());
+        matrix.shiftArray(matrix.getMatrixArray(), matrix.setShiftParameter());
         showArray(matrix.getMatrixArray());
     }
 
@@ -119,7 +119,7 @@ public class Matrix {
         }
     }
 
-    private static void shiftArray(int[][] array, int parameter){
+    private void shiftArray(int[][] array, int parameter){
         int countLines = array.length;                                      //количество строк
         int countColumns = array[0].length;                                 //количество столбцов
         int[][] shiftedArray = new int[countLines][countColumns];
