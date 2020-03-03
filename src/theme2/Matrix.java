@@ -39,7 +39,7 @@ public class Matrix {
         this.matrixArray = matrixArray;
     }
 
-    private int[][] getMatrixArray() {
+    public int[][] getMatrixArray() {
         return matrixArray;
     }
 
@@ -64,7 +64,6 @@ public class Matrix {
 
         return inputParameter;
     }
-
 
     public static void main(String[] args) throws Exception {
         Matrix matrix = new Matrix();
