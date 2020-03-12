@@ -68,8 +68,8 @@ public class Matrix {
     public static void main(String[] args) throws Exception {
         Matrix matrix = new Matrix();
         showArray(matrix.getMatrixArray());
-        //shiftMatrix(matrix.getMatrixArray(), matrix.setShiftParameter());
-        matrix.shiftArray(matrix.getMatrixArray(), matrix.setShiftParameter());
+        shiftMatrix(matrix.getMatrixArray(), matrix.setShiftParameter());
+        //matrix.shiftArray(matrix.getMatrixArray(), matrix.setShiftParameter());
         showArray(matrix.getMatrixArray());
     }
 
