@@ -11,6 +11,7 @@ public class Team {
     private int goals;
     private int gc;
     private int points;
+    private int goalsgc;
 
     public Team(String name) {
         this.name = name;
@@ -33,22 +34,28 @@ public class Team {
         return wins;
     }
 
+    public int getGoalsgc() {
+
+
+        return (this.goals - this.gc);
+    }
+
     public static void main(String[] args) throws IOException {
-        String filename = "test.txt";
+        String filename = "bigtest.txt";
         ArrayList<String> teamsName =  createArray(filename);
         ArrayList<Team> teams = createObjects(teamsName);
         createFields(teams, filename);
         sortForTable(teams, filename);
         makeTabble(teams);
         //Тестовая таблица для вывода в консоль
-        /*System.out.printf("%-15s%-10s%-9s%-13s%-11s%-15s%-10s%-10s%n","Команда","Победы", "Ничьи", "Поражения", "Забитые", "Пропущенные", "Очки", "Место");
+        System.out.printf("%-15s%-10s%-9s%-13s%-11s%-15s%-10s%-10s%n","Команда","Победы", "Ничьи", "Поражения", "Забитые", "Пропущенные", "Очки", "Место");
         System.out.println("----------------------------------------------------------------------------------------");
         int count = 1;
         for (Team team: teams
              ) {
             System.out.printf("%-17s%-10d%-11d%-12d%-13d%-11d%-11d%-10d%n", team.name, team.wins, team.draw, team.losings, team.goals, team.gc, team.points, count);
             count++;
-        } */
+        }
     }
 
 // Считываем файл и составляем список команд
@@ -69,6 +76,8 @@ public class Team {
                 }
             }
         }
+        fl.close();
+        reader.close();
         return nameslist;
     }
 
@@ -114,6 +123,8 @@ public class Team {
                 }
             }
         }
+        fl.close();
+        reader.close();
     }
  //   Логика заполнения поле при разных исходах матча
     private static void winProcess(Team team, int goal, int goalc){
@@ -139,15 +150,15 @@ public class Team {
     }
     // Сортировка таблицы
     private static void sortForTable(ArrayList<Team> teams, String filename) throws IOException {
-        Collections.sort(teams, Comparator.comparing(Team::getPoints).reversed().thenComparing(Team::getGc)
-                .thenComparing(Team::getWins));
+        Collections.sort(teams, Comparator.comparing(Team::getPoints).thenComparing(Team::getGoalsgc)
+                .thenComparing(Team::getWins).reversed());
         for (int i = 1; i < teams.size(); i++) {
-            if ((teams.get(i).getPoints() == teams.get(i - 1).getPoints()) && (teams.get(i).getGc() == teams.get(i - 1).getGc())
+            if ((teams.get(i).getPoints() == teams.get(i - 1).getPoints()) && (teams.get(i).getGoalsgc() == teams.get(i - 1).getGoalsgc())
                     && (teams.get(i).getWins() == teams.get(i - 1).getWins()) && isWin(filename, teams.get(i).getName(), teams.get(i - 1).getName())) {
                 swap(teams, i, i - 1);
 
                 for (int z = i - 1; (z - 1) >= 0; z--) {
-                    if ((teams.get(z).getPoints() == teams.get(z - 1).getPoints()) && (teams.get(z).getGc() == teams.get(z - 1).getGc())
+                    if ((teams.get(z).getPoints() == teams.get(z - 1).getPoints()) && (teams.get(z).getGoalsgc() == teams.get(z - 1).getGoalsgc())
                             && (teams.get(z).getWins() == teams.get(z - 1).getWins()) && isWin(filename, teams.get(z).getName(), teams.get(z - 1).getName())) {
                         swap(teams, z, z - 1);
 
@@ -186,15 +197,16 @@ public class Team {
                 if (number1 <= number2){
                     win = true;
                     break;
-                }else
-                    break;
+                }else break;
             }
         }
+        fl.close();
+        reader.close();
         return win;
     }
 // Создаем таблицу в файле
     private static void makeTabble(ArrayList<Team> teams) throws IOException {
-        PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(new File("outtest.txt"), false)));
+        PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(new File("bigouttest.txt"), false)));
         pw.printf("%-15s%-10s%-9s%-13s%-11s%-15s%-10s%-10s%n","Команда","Победы", "Ничьи", "Поражения", "Забитые", "Пропущенные", "Очки", "Место");
         pw.println("----------------------------------------------------------------------------------------");
         int count = 1;
