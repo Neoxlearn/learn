@@ -25,10 +25,11 @@ public class Team {
     private int gc;
     private int points;
     private int goalsgc;
+    private ArrayList<String> loosers;
 
     public Team(String name) {
         this.name = name;
-
+        loosers = new ArrayList<>();
     }
 
     public String getName() {
@@ -58,14 +59,19 @@ public class Team {
         ArrayList<String> teamsName =  createArray(filename);
         ArrayList<Team> teams = createObjects(teamsName);
         createFields(teams, filename);
-        sortForTable(teams, filename);
+        sortForTable(teams);
         makeTabble(teams);
         //Тестовая таблица для вывода в консоль
+        consoleTable(teams);
+    }
+
+    //Тестовая таблица для вывода в консоль
+    private static void consoleTable(ArrayList<Team> teams){
         System.out.printf("%-15s%-10s%-9s%-13s%-11s%-15s%-10s%-10s%n","Команда","Победы", "Ничьи", "Поражения", "Забитые", "Пропущенные", "Очки", "Место");
         System.out.println("----------------------------------------------------------------------------------------");
         int count = 1;
         for (Team team: teams
-             ) {
+        ) {
             System.out.printf("%-17s%-10d%-11d%-12d%-13d%-11d%-11d%-10d%n", team.name, team.wins, team.draw, team.losings, team.goals, team.gc, team.points, count);
             count++;
         }
@@ -117,7 +123,7 @@ public class Team {
                  ) {
                 if (fields[0].equals(team.name)){
                     if(number1 > number2){
-                        winProcess(team, number1, number2);
+                        winProcess(team, fields[1], number1, number2);
                     }
                     else if (number1 < number2){
                         loseProcess(team, number1, number2);
@@ -129,7 +135,7 @@ public class Team {
                         loseProcess(team, number2, number1);
                     }
                     else if (number1 < number2){
-                        winProcess(team, number2, number1);
+                        winProcess(team, fields[0], number2, number1);
 
                     }
                     else drawProcess(team, number1, number2);
@@ -140,11 +146,12 @@ public class Team {
         reader.close();
     }
  //   Логика заполнения поле при разных исходах матча
-    private static void winProcess(Team team, int goal, int goalc){
+    private static void winProcess(Team team, String looseTeam ,int goal, int goalc){
         team.wins = team.wins + 1;
         team.goals = team.goals + goal;
         team.gc = team.gc + goalc;
         team.points = team.points + 3;
+        team.loosers.add(looseTeam);
     }
 
     private static void loseProcess(Team team, int goal, int goalc){
@@ -162,17 +169,17 @@ public class Team {
 
     }
     // Сортировка таблицы
-    private static void sortForTable(ArrayList<Team> teams, String filename) throws IOException {
+    private static void sortForTable(ArrayList<Team> teams) {
         Collections.sort(teams, Comparator.comparing(Team::getPoints).thenComparing(Team::getGoalsgc)
                 .thenComparing(Team::getWins).reversed());
         for (int i = 1; i < teams.size(); i++) {
             if ((teams.get(i).getPoints() == teams.get(i - 1).getPoints()) && (teams.get(i).getGoalsgc() == teams.get(i - 1).getGoalsgc())
-                    && (teams.get(i).getWins() == teams.get(i - 1).getWins()) && isWin(filename, teams.get(i).getName(), teams.get(i - 1).getName())) {
+                    && (teams.get(i).getWins() == teams.get(i - 1).getWins()) && teams.get(i).loosers.contains(teams.get(i - 1).name)){                     //isWin(filename, teams.get(i).getName(), teams.get(i - 1).getName())) {
                 swap(teams, i, i - 1);
 
                 for (int z = i - 1; (z - 1) >= 0; z--) {
                     if ((teams.get(z).getPoints() == teams.get(z - 1).getPoints()) && (teams.get(z).getGoalsgc() == teams.get(z - 1).getGoalsgc())
-                            && (teams.get(z).getWins() == teams.get(z - 1).getWins()) && isWin(filename, teams.get(z).getName(), teams.get(z - 1).getName())) {
+                            && (teams.get(z).getWins() == teams.get(z - 1).getWins()) && teams.get(z).loosers.contains(teams.get(z - 1).name)){             //isWin(filename, teams.get(z).getName(), teams.get(z - 1).getName())) {
                         swap(teams, z, z - 1);
 
                     } else {
@@ -190,7 +197,7 @@ public class Team {
         teams.set(b, buff);
 
     }
-    // Проверяем, победила ли команда teamName1
+    // Проверяем, победила ли команда teamName1 TODO: Не используем, заменил на Arraylist loosers и проверку в createFields.
     private static boolean isWin(String filename, String teamName1, String teamName2) throws IOException {
         boolean win = false;
         FileReader fl = new FileReader(filename);
@@ -222,11 +229,11 @@ public class Team {
         PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(new File("bigouttest.txt"), false)));
         pw.printf("%-15s%-10s%-9s%-13s%-11s%-15s%-10s%-10s%n","Команда","Победы", "Ничьи", "Поражения", "Забитые", "Пропущенные", "Очки", "Место");
         pw.println("----------------------------------------------------------------------------------------");
-        int count = 1;
+        int rank = 1;
         for (Team team: teams
              ) {
-            pw.printf("%-17s%-10d%-11d%-12d%-13d%-11d%-11d%-10d%n", team.name, team.wins, team.draw, team.losings, team.goals, team.gc, team.points, count);
-            count ++;
+            pw.printf("%-17s%-10d%-11d%-12d%-13d%-11d%-11d%-10d%n", team.name, team.wins, team.draw, team.losings, team.goals, team.gc, team.points, rank);
+            rank ++;
         }
         pw.close();
     }
