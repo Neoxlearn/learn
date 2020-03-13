@@ -54,11 +54,16 @@ public class Team {
         return (this.goals - this.gc);
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         String filename = "bigtest.txt";
-        ArrayList<String> teamsName =  createArray(filename);
-        ArrayList<Team> teams = createObjects(teamsName);
-        createFields(teams, filename);
+        ArrayList<Team> teams = new ArrayList<>();
+        try {
+            ArrayList<String> teamsName =  createArray(filename);
+            teams = createObjects(teamsName);
+            createFields(teams, filename);
+        } catch (IOException e) {
+            System.err.println("Файл не найден");;
+        }
         sortForTable(teams);
         makeTabble(teams);
         //Тестовая таблица для вывода в консоль
@@ -80,7 +85,12 @@ public class Team {
 // Считываем файл и составляем список команд
     private static ArrayList<String> createArray(String filename) throws IOException {
         ArrayList<String> nameslist = new ArrayList<>();
-        FileReader fl = new FileReader(filename);
+        FileReader fl = null;
+        try {
+            fl = new FileReader(filename);
+        } catch (FileNotFoundException e) {
+            System.err.println("Файл не найден");
+        }
         BufferedReader reader = new BufferedReader(fl);
         String line = null;
         while ((line = reader.readLine()) != null){
@@ -111,7 +121,12 @@ public class Team {
     }
 // Заполняем поля класса для каждой команды
     private static void createFields(ArrayList<Team> teams, String filename) throws IOException {
-        FileReader fl = new FileReader(filename);
+        FileReader fl = null;
+        try {
+            fl = new FileReader(filename);
+        } catch (FileNotFoundException e) {
+            System.err.println("Файл не найден");
+        }
         BufferedReader reader = new BufferedReader(fl);
         String line = null;
         while ((line = reader.readLine()) != null){
@@ -225,8 +240,13 @@ public class Team {
         return win;
     }
 // Создаем таблицу в файле
-    private static void makeTabble(ArrayList<Team> teams) throws IOException {
-        PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(new File("bigouttest.txt"), false)));
+    private static void makeTabble(ArrayList<Team> teams)  {
+        PrintWriter pw = null;
+        try {
+            pw = new PrintWriter(new BufferedWriter(new FileWriter(new File("bigouttest.txt"), false)));
+        } catch (IOException e) {
+            System.err.println(e);
+        }
         pw.printf("%-15s%-10s%-9s%-13s%-11s%-15s%-10s%-10s%n","Команда","Победы", "Ничьи", "Поражения", "Забитые", "Пропущенные", "Очки", "Место");
         pw.println("----------------------------------------------------------------------------------------");
         int rank = 1;
