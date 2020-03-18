@@ -34,10 +34,10 @@ public class BlackJackGame {
             }
             count ++;
             gameNext = game(player, computer);
-            System.out.println();
+            System.out.println("----------------------------------------------");
             System.out.println(player);
             System.out.println(computer);
-            System.out.println();
+            System.out.println("----------------------------------------------");
         }
         printFullWinner(player,computer);
         System.out.println("Конец игры.");
@@ -112,12 +112,12 @@ public class BlackJackGame {
 
     private void printFullWinner(Player first, Player second) {
         Player winner = null;
-        if (first.isLose() && !second.isLose()) {
+        /*if (first.isLose() && !second.isLose()) {
             winner = second;
             System.out.printf("Победитель [%s]! Побед: %d \n", winner.getName(), winner.getWin());
         } else if (second.isLose() && !first.isLose()) {
             winner = first;
-        } else {
+        } else {*/
             System.out.println(first);
             System.out.println(second);
             if (first.getWin() > second.getWin()) {
@@ -125,7 +125,7 @@ public class BlackJackGame {
             } else if (first.getWin() < second.getWin()) {
                 winner = second;
             }
-        }
+        //}
         System.out.println(winner != null ?
                 String.format("Победитель [%s]! Побед: %d", winner.getName(), winner.getWin()) :
                 "Победителя нет!");

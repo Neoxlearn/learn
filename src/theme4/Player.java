@@ -2,6 +2,7 @@ package theme4;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Player {
@@ -138,5 +139,17 @@ public class Player {
         return String.format("Игрок [%s]: победы = %d; проигрыши = %d;", this.name, this.win, this.lose);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Player player = (Player) o;
+        return name.equals(player.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
 
 }
