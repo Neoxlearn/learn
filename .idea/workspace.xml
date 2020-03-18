@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c7ac478-c466-42b4-bd83-46b057a95b7c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/theme4/BlackJackGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme4/Card.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme4/Desk.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/theme4/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ITcourses/theme3/Team.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ITcourses/theme3/Team.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/theme3/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme3/Team.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +48,33 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Team">
+  <component name="RunManager" selected="Application.BlackJackGame">
+    <configuration name="BlackJackGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="theme4.BlackJackGame" />
+      <module name="ITcourses" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="theme4.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Desk" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="theme4.Desk" />
+      <module name="ITcourses" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="theme4.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Matrix" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="theme2.Matrix" />
       <module name="ITcourses" />
@@ -73,19 +101,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="task2_1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="theme2.task2_1" />
-      <module name="ITcourses" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="theme2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="task2_2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="theme2.task2_2" />
       <module name="ITcourses" />
@@ -99,26 +114,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="task2_38" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="theme2.task2_38" />
-      <module name="ITcourses" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="theme2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.BlackJackGame" />
+        <item itemvalue="Application.Desk" />
         <item itemvalue="Application.Team" />
         <item itemvalue="Application.Matrix" />
         <item itemvalue="Application.task2_2" />
-        <item itemvalue="Application.task2_1" />
-        <item itemvalue="Application.task2_38" />
       </list>
     </recent_temporary>
   </component>
@@ -135,7 +137,8 @@
       <workItem from="1582609347808" duration="407000" />
       <workItem from="1582609925428" duration="267000" />
       <workItem from="1582612307333" duration="23170000" />
-      <workItem from="1582867175882" duration="66033000" />
+      <workItem from="1582867175882" duration="81436000" />
+      <workItem from="1584435619804" duration="11959000" />
     </task>
     <servers />
   </component>
@@ -147,7 +150,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
