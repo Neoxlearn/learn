@@ -11,11 +11,11 @@ public class Card {
         this.colour = colour;
     }
 
-    public int getRank() {
+    int getRank() {
         return rank;
     }
 
-    public String getSuit() {
+    String getSuit() {
         return suit;
     }
 

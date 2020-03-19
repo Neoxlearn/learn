@@ -10,7 +10,7 @@ public class BlackJackGame {
 
     private final Desk desk;
 
-    protected BlackJackGame(Desk desk){
+    private BlackJackGame(Desk desk){
         this.desk = desk;
     }
 
@@ -104,7 +104,7 @@ public class BlackJackGame {
         return result;
     }
 
-    public void printWinner(Player winner, Player looser){
+    private void printWinner(Player winner, Player looser){
         winner.getPlayerHand();
         looser.getPlayerHand();
         System.out.println("Победитель этой игры: " + winner.getName());

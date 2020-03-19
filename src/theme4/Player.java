@@ -59,24 +59,19 @@ public class Player {
         for (int i = 0; i < 2; i++) {
             newHand.add(desk.getCard());
         }
-        /*System.out.println("Players hand");
-        for (Card card:newHand
-             ) {
 
-            System.out.print(card.toString() + " ");
-        }*/
         return newHand;
 
     }
 
-    protected void setNewHand(){
+    void setNewHand(){
         this.hand.clear();
         for (int i = 0; i < 2; i++) {
             this.hand.add(this.desk.getCard());
         }
     }
 
-    public int getPoints(){
+    int getPoints(){
         int points = 0;
         for (Card card: this.hand
              ) {
@@ -90,11 +85,11 @@ public class Player {
         this.hand.add(this.desk.getCard());
     }
 
-    protected boolean isLose(){
+    boolean isLose(){
         return this.getPoints() > this.maxScore;
     }
 
-    protected void upadate(){
+    void upadate(){
         this.stop = false;
     }
 
@@ -132,7 +127,7 @@ public class Player {
         return result;
     }
 
-    protected String getPlayerHand(){
+    String getPlayerHand(){
         return String.format("Игрок [%s]: рука: %s; сумма очков: %d;", this.name, this.hand, this.getPoints());
     }
     public String toString() {

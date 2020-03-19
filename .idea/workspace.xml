@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="0c7ac478-c466-42b4-bd83-46b057a95b7c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ITcourses/theme4/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ITcourses/theme4/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/theme4/BlackJackGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme4/BlackJackGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/theme4/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme4/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/theme4/Desk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme4/Desk.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/theme4/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme4/Player.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -135,7 +139,7 @@
       <workItem from="1582609925428" duration="267000" />
       <workItem from="1582612307333" duration="23170000" />
       <workItem from="1582867175882" duration="81436000" />
-      <workItem from="1584435619804" duration="13553000" />
+      <workItem from="1584435619804" duration="14756000" />
     </task>
     <servers />
   </component>

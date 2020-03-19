@@ -1,6 +1,7 @@
 package theme4;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class Desk {
 
     private List<Card> cards;
 
-    public Desk() {
+    Desk() {
         this.cards = new ArrayList<>();
         for (char symbol: colours
              ) {
@@ -35,7 +36,7 @@ public class Desk {
         return this.cards.size();
     }
 
-    protected void shuffleDesk(){
+    void shuffleDesk(){
         Collections.shuffle(this.cards);
 
     }
@@ -50,4 +51,12 @@ public class Desk {
         Player player = new Player("Dimon", 21, desk);
         System.out.println(player.getPoints());
     }*/
+
+    @Override
+    public String toString() {
+        return "Desk{" +
+                "colours=" + Arrays.toString(colours) +
+                ", cards=" + cards +
+                '}';
+    }
 }
